@@ -1,0 +1,17 @@
+.center-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.center-container h1 {
+  font-size: 48px; 
+  font-weight: 700;
+}
+
+.center-container p {
+  font-size: 20px;
+}

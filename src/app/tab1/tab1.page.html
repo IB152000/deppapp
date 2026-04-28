@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mon App Posts</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- MENU SIMPLE -->
+  <ion-segment value="{{currentView}}">
+    <ion-segment-button value="welcome" (click)="showWelcome()">
+      Accueil
+    </ion-segment-button>
+
+    <ion-segment-button value="posts" (click)="showPosts()">
+      Posts
+    </ion-segment-button>
+  </ion-segment>
+
+  <br>
+
+  <!-- WELCOME -->
+  <div class="center-container" *ngIf="currentView === 'welcome'">
+  <h1>Bienvenue 👋</h1>
+  <p>TP Ionic - API Posts</p>
+</div>
+
+  <!-- POSTS -->
+  <div *ngIf="currentView === 'posts'">
+
+    <ion-button (click)="loadPosts()">Recharger</ion-button>
+
+    <p *ngIf="loading">Chargement...</p>
+    <p *ngIf="error">{{ error }}</p>
+
+    <ion-list>
+      <ion-item *ngFor="let post of posts">
+        <ion-label>
+          <h2>{{ post.title }}</h2>
+          <p>{{ post.body }}</p>
+        </ion-label>
+
+        <ion-button color="primary" (click)="editPost(post)">✏️</ion-button>
+        <ion-button color="danger" (click)="deletePost(post.id)">🗑️</ion-button>
+      </ion-item>
+    </ion-list>
+
+  </div>
+
+</ion-content>
